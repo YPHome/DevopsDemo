@@ -11,6 +11,7 @@ public interface ServerMapper {
 
     Server server = null;
     Server selectById(@Param("id") Integer id);
+    int insertServer(Server server);
 
     /**
     int insertServer(@Param("id") Integer id,

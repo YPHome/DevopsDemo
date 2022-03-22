@@ -1,6 +1,8 @@
 package com.demo.devopsdemo.service;
 
+import com.demo.devopsdemo.dao.PersonMapper;
 import com.demo.devopsdemo.dao.ServerMapper;
+import com.demo.devopsdemo.pojo.Person;
 import com.demo.devopsdemo.pojo.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,8 +13,11 @@ import javax.annotation.Resource;
 @Service
 public class GetServerServiceImpl implements GetServerService{
 
-    @Autowired
+    @Resource
     private ServerMapper serverMapper;
+
+    @Resource
+    private PersonMapper personMapper;
 
 
     @Override
@@ -28,6 +33,13 @@ public class GetServerServiceImpl implements GetServerService{
         id = serverMapper.insertServer(server);
         return id;
 
+    }
+
+    @Override
+    public int addPerson(Person person) {
+        int num = 0;
+        num = personMapper.insertPerson(person);
+        return num;
     }
 
 
